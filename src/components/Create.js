@@ -28,8 +28,7 @@ function Create() {
 
   let loadDataFromForm = (event) => {
     event.preventDefault();
-    let note = event.target.elements.note.value;
-    note = note.trim();
+    let note = event.target.elements.note.value.trim();
     if (note === "") {
       alert("Fill in the notes");
       return false;
