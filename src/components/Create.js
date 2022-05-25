@@ -30,7 +30,7 @@ function Create() {
     event.preventDefault();
     let note = event.target.elements.note.value.trim();
     if (note === "") {
-      alert("Fill in the notes");
+      alert("Fill in the notes"); // заменить на вспл.окно bootstrep
       return false;
     }
     sendData({ note: note });

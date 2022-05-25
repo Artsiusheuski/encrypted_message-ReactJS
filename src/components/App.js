@@ -18,7 +18,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/create" element={<Create />} />
           <Route exact path="/note" element={<Note />} />
-          <Route path="note/:noteURL" element={<Note />} />
+          <Route path="/note/:noteURL" element={<Note />} />
           <Route element={<Error />} />
         </Routes>
       </Router>
