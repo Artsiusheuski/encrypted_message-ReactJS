@@ -39,14 +39,26 @@ function Create() {
   return (
     <div>
       <form onSubmit={loadDataFromForm} className={formClass}>
-        <label htmlFor="">Enter notes</label>
-        <textarea name="note" id="note" defaultValue="Test"></textarea>
-        <button type="submit">Create</button>
+        <label htmlFor="note">Enter notes</label>
+        <textarea
+          name="note"
+          id="note"
+          defaultValue="massage"
+          className="form-control"
+        ></textarea>
+        <p>Warning!Maximum length 1000 characters</p>
+        <button type="submit" className="btn btn-warning">
+          Create
+        </button>
       </form>
       <div className={lineClass}>
-        <div>{url}</div>
+        <div className="alert alert-primary" role="alert">
+          {url}
+        </div>
+        <p>Copy this URL.</p>
         <div>
           <button
+            className="btn btn-dark"
             onClick={function () {
               window.location.reload();
             }}

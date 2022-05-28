@@ -20,17 +20,15 @@ function Note() {
       })
         .then((response) => response.json())
         .then((response) => {
-          switch (response.result) {
-            case response.result:
-              setNoteText(response.note);
-              setLineClass("");
-              setFormClass("hide");
-              setErrorClass("hide");
-              break;
-            default:
-              setLineClass("hide");
-              setFormClass("hide");
-              setErrorClass("");
+          if (response.result) {
+            setNoteText(response.note);
+            setLineClass("");
+            setFormClass("hide");
+            setErrorClass("hide");
+          } else if (!response.result) {
+            setLineClass("hide");
+            setFormClass("hide");
+            setErrorClass("");
           }
         });
     } else {
@@ -58,6 +56,7 @@ function Note() {
         <div>{noteText}</div>
         <div>
           <button
+            className="btn btn-success"
             onClick={function () {
               window.location.href = env.url;
             }}
@@ -73,7 +72,9 @@ function Note() {
         <form action="" onSubmit={getNote}>
           <label htmlFor="url">Enter your hash</label>
           <input type="text" name="url" id="url" className="form-control" />
-          <button type="submit">Search Notes</button>
+          <button type="submit" className="btn btn-warning">
+            Search Notes
+          </button>
         </form>
       </div>
     </div>

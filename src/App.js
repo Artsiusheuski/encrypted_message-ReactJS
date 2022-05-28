@@ -10,19 +10,21 @@ import Main from "./components/Main";
 
 function App() {
   return (
-    <div className="main">
+    <div className="container m_conteiner d-flex flex-column justify-content-between">
       <Router>
         <Header></Header>
-        <Routes>
-          <Route exact path="/" element={<Main />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/create" element={<Create />} />
-          <Route exact path="/note" element={<Note />} />
-          <Route path="note/:noteURL" element={<Note />} />
-          <Route element={<Error />} />
-        </Routes>
+        <div className="margin_main">
+          <Routes>
+            <Route exact path="/" element={<Main />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/create" element={<Create />} />
+            <Route exact path="/note" element={<Note />} />
+            <Route path="note/:noteURL" element={<Note />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
+        </div>
+        <Footer></Footer>
       </Router>
-      <Footer></Footer>
     </div>
   );
 }
