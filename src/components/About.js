@@ -1,8 +1,6 @@
-import Test from "./test";
 function About() {
   return (
     <div>
-      <Test test="Hello"></Test>
       <h3>
         Front end development hasn't always gotten the respect it deserves
         compared to back end development.
