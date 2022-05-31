@@ -8,6 +8,7 @@ function Note() {
   const [lineClass, setLineClass] = useState("hide");
   const [formClass, setFormClass] = useState("hide");
   const [errorClass, setErrorClass] = useState("hide");
+  const [modalClass, setModalClass] = useState("hide");
 
   useEffect(() => {
     if (noteURL !== undefined) {
@@ -42,15 +43,38 @@ function Note() {
     event.preventDefault();
     let url = event.target.elements.url.value.trim();
     if (url === "") {
-      alert("Fill in the notes");
+      setModalClass("modal");
       return false;
     }
     noteURL = url;
     window.location.href = env.url + "/" + url;
   }
+  const closeModal = () => {
+    setModalClass("hide");
+  };
 
   return (
     <div>
+      <div className={modalClass}>
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">WARNING!!!!!!</h5>
+              <button
+                onClick={closeModal}
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <p>Are you kidding? Enter URL!</p>
+            </div>
+            <div className="modal-footer"></div>
+          </div>
+        </div>
+      </div>
       <div className={lineClass}>
         <h4>Note:</h4>
         <div>{noteText}</div>

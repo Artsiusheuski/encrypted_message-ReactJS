@@ -6,6 +6,7 @@ function Create() {
   const [url, setUrl] = useState("");
   const [lineClass, setLineClass] = useState("hide");
   const [formClass, setFormClass] = useState("");
+  const [modalClass, setModalClass] = useState("hide");
 
   let sendData = (obj) => {
     setFormClass("hide");
@@ -19,7 +20,6 @@ function Create() {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
         if (response.result) {
           setUrl(env.url + "/" + response.url);
         }
@@ -30,14 +30,40 @@ function Create() {
     event.preventDefault();
     let note = event.target.elements.note.value.trim();
     if (note === "") {
-      alert("Fill in the notes"); // заменить на вспл.окно bootstrep
+      setModalClass("modal");
       return false;
     }
     sendData({ note: note });
   };
+  const closeModal = () => {
+    setModalClass("hide");
+  };
 
   return (
     <div>
+      <div className={modalClass} tabIndex="-1">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">WARNING!!!!!</h5>
+              <button
+                onClick={closeModal}
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              <p>
+                You are trying to send an empty message - in my opinion this
+                makes no sense. Therefore, enter at least something !!!!!
+              </p>
+            </div>
+            <div className="modal-footer"></div>
+          </div>
+        </div>
+      </div>
       <form onSubmit={loadDataFromForm} className={formClass}>
         <label htmlFor="note">Enter notes</label>
         <textarea
