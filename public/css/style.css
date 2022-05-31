@@ -1,3 +1,23 @@
-.hide{
+.m_conteiner{
+    min-height: 100vh;
+    background:url("../img/more_bereg_minimalizm_100029_2048x1152.jpg") 0 0/100% 100% no-repeat;
+}
+.hide {
     display: none;
+}
+.active {
+    color:#f01010
+}
+.for_a{
+    color:black;
+    font-weight: bolder;  
+}
+.for_a:hover{
+    color: #9c9c0c;
+}
+.margin_main{
+    margin-bottom: auto;
+}
+.footer_color:hover{
+    color: #ffffff;
 }
